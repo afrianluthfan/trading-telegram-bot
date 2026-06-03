@@ -1,0 +1,22 @@
+[project]
+name = "cashgen2"
+version = "0.1.0"
+description = "Anantaka Tier 1 Sniper — Pure Python quantitative engine"
+requires-python = ">=3.11"
+dependencies = [
+    "aiohttp>=3.9,<4",
+    "pydantic-settings>=2.0,<3",
+]
+
+[project.scripts]
+cashgen2 = "src.main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
