@@ -1,4 +1,4 @@
-# cashgen2 — Anantaka Tier 1 Sniper
+# Tele-Binance Trading Bot
 
 A pure-Python, async-first quantitative engine that hunts a single, narrow setup
 on Binance USD-M Futures: a **5-minute Fair Value Gap** that prints inside a
