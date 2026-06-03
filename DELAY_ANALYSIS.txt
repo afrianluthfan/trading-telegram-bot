@@ -35,7 +35,7 @@ PART 1: PRIMARY BOTTLENECK - THE 30-SECOND POLLING TIMEOUT
 
 ═══════════════════════════════════════════════════════════════════════════════════
 
-FILE: /home/cashgen/cashgen2/src/telegram/bot.py
+FILE: /home/cashgen/trading-telegram-bot/src/telegram/bot.py
 FUNCTION: start_polling() [lines 111-152]
 CRITICAL LINE: 127
 
@@ -117,7 +117,7 @@ PART 2: SECONDARY BOTTLENECK - SEQUENTIAL BOOTSTRAP API CALLS
 
 ═══════════════════════════════════════════════════════════════════════════════════
 
-FILE: /home/cashgen/cashgen2/src/main.py
+FILE: /home/cashgen/trading-telegram-bot/src/main.py
 FUNCTION: run() [lines 255-326]
 CRITICAL LINES: 285-295
 
@@ -174,7 +174,7 @@ PART 3: TERTIARY FACTOR - POLLING STARTS LATE
 
 ═══════════════════════════════════════════════════════════════════════════════════
 
-FILE: /home/cashgen/cashgen2/src/main.py
+FILE: /home/cashgen/trading-telegram-bot/src/main.py
 LINES: 285-311
 
 THE SEQUENCE:
@@ -280,7 +280,7 @@ PART 6: AFFECTED FILES & LINE NUMBERS
 
 🔴 CRITICAL FILES:
 
-1. /home/cashgen/cashgen2/src/telegram/bot.py
+1. /home/cashgen/trading-telegram-bot/src/telegram/bot.py
    - Line 37-42: open() - Creates HTTP session with 30s timeout
    - Line 111-152: start_polling() - Main polling loop
    - Line 127: params={"timeout": 30} ← THE MAIN PROBLEM
@@ -289,7 +289,7 @@ PART 6: AFFECTED FILES & LINE NUMBERS
    - Line 157-187: _handle_command() - Routes commands
    - Line 159-160: /start command handler
 
-2. /home/cashgen/cashgen2/src/main.py
+2. /home/cashgen/trading-telegram-bot/src/main.py
    - Line 255-326: run() - Main boot sequence
    - Line 285-295: Bootstrap loop (sequential)
    - Line 290-291: Sequential await bootstrap calls
@@ -299,11 +299,11 @@ PART 6: AFFECTED FILES & LINE NUMBERS
 
 🟠 SECONDARY FILES:
 
-3. /home/cashgen/cashgen2/src/ws/streams.py
+3. /home/cashgen/trading-telegram-bot/src/ws/streams.py
    - Line 46-75: bootstrap() function
    - Line 52: await client.fetch_klines() - Makes API call
 
-4. /home/cashgen/cashgen2/src/execution/client.py
+4. /home/cashgen/trading-telegram-bot/src/execution/client.py
    - Line 113-122: fetch_klines() - REST API call
    - Line 117: await self.get("/fapi/v1/klines", {...})
 

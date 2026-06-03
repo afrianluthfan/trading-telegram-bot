@@ -1,5 +1,5 @@
 [project]
-name = "cashgen2"
+name = "trading-telegram-bot"
 version = "0.1.0"
 description = "Anantaka Tier 1 Sniper — Pure Python quantitative engine"
 requires-python = ">=3.11"
@@ -9,7 +9,7 @@ dependencies = [
 ]
 
 [project.scripts]
-cashgen2 = "src.main:main"
+trading-telegram-bot = "src.main:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

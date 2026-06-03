@@ -37,8 +37,8 @@ candles.
 ## Repository layout
 
 ```
-cashgen2/
-├── pyproject.toml             # uv project; entry point: cashgen2 = src.main:main
+trading-telegram-bot/
+├── pyproject.toml             # uv project; entry point: trading-telegram-bot = src.main:main
 ├── .env.example               # copy to .env, fill in keys
 ├── refs/                      # design docs (business logic, infra, WS streams, PDF)
 ├── DELAY_ANALYSIS.txt         # latency notes
@@ -96,12 +96,12 @@ $EDITOR .env          # fill in your own keys — see "Configuration" below
 uv run pytest
 
 # 4. Run on testnet
-uv run cashgen2
+uv run trading-telegram-bot
 # or, pointing at a non-default env file:
-uv run cashgen2 .env-live
+uv run trading-telegram-bot .env-live
 ```
 
-The `cashgen2` script is declared in `pyproject.toml` and resolves to
+The `trading-telegram-bot` script is declared in `pyproject.toml` and resolves to
 `src.main:main`.
 
 ---
